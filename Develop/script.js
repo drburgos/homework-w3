@@ -17,8 +17,8 @@ function generatePassword() {
   var charLength = window.prompt ("How many characters would you like the password to contain?");
 
   // if statement: option a) password is < 8 then alert; option b: continue process
-  if (charLength <= 9) {
-    window.alert ("Password length must be at lease 8 characters.");
+  if (charLength < 8) {
+    window.alert ("Password length must be at least 8 characters.");
 
     // calling function generatePassword to start over again.
     generatePassword();
@@ -66,25 +66,24 @@ function generatePassword() {
     // ------------- Generating the password --------------------
 
     // proceed with the password by making it a string
-    var password = "";
+    var newPassword = "";
 
     // define a for loop in order to get random values taking into account past criteria
-    for(var i = 0; i <= charLength; i++){
+    for(var i = 0; i < charLength; i++){
    
       // we will change the value of password 
-      password = 
+      newPassword = 
 
       // you need to concatenate the resulting string plus the characters selected randomly
 
-      password + 
+      newPassword + 
 
       // plus the result of multipling a random decimal between .01 and .99 times the length of the string that is referenced and then round it up to a number so we can use it in the position of the referenced string
 
       values.charAt(Math.floor(Math.random() * (values.length - 1)));
-    }
+    }   
 
-return password;
-   
+    return newPassword;
 
 }
 
