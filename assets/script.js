@@ -17,15 +17,15 @@ function generatePassword() {
   var charLength = window.prompt ("How many characters would you like the password to contain?");
 
   // if statement: option a) password is < 8 then alert; option b: continue process
-  if (charLength < 8) {
-    window.alert ("Password length must be at least 8 characters.");
+  if (charLength < 8 || charLength > 128) {
+    window.alert ("Password length must be at least 8 characters and no more than 128.");
 
     // calling function generatePassword to start over again.
-    generatePassword();
+    return generatePassword();
   }  
   
   // continue process: else statement starts selection criteria
-    else {
+  else {
 
       // first criteria: special characters ok or cancel
       var SpecialCharacters = window.confirm ("Click OK to confirm special characters.");
@@ -36,8 +36,7 @@ function generatePassword() {
       // third criteria: lowercase characters
       var LowercaseCharacters = window.confirm ("Click OK to confirm lowercase characters.");
 
-    }
-
+    
     // -----------Getting the information to form the password------------------
 
     // defining varialbes 
@@ -58,7 +57,7 @@ function generatePassword() {
     }
 
     // if LowercaseCharacters is not true, then remove lowercase characters.
-    if (!LowercaseCharacters) {
+    if (LowercaseCharacters) {
     var strLowerChar = "abcdefghijklmnopqrstuvwxyz"
     var values = values.concat(values, strLowerChar);
     }
@@ -86,7 +85,7 @@ function generatePassword() {
     return newPassword;
 
 }
-
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
